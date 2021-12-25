@@ -1,0 +1,54 @@
+<div class="main" *ngIf="product">
+  <div class="row">
+    <div class="col-sm-6">
+      <div style="width:90%; margin:auto;">
+        <img [src]="product.img" style="width:500px;height:500px;" alt="ProductPicture">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+
+      <div style="width: 90%; margin-top: 50px;">
+        <h1>Product Title: {{product.title}}</h1>
+        <h2>Description: {{product.description}}</h2>
+        <h3>Base Price Rs: {{newPrice}}</h3>
+        <div *ngFor="let v of product.variant; let i=index">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 style="margin-top: 15px;">{{v.name}}</h4>
+              <form [formGroup]="radioForm">
+                <div class="btn-group btn-group-toggle" ngbRadioGroup [name]="v.name">
+                  <div *ngFor="let o of v.option; let j = index">
+                    <label ngbButtonLabel class="btn-primary">
+                      <input id="o[j]" [formControlName]="v.name" type="radio" [value]="o">{{o.spec}}
+                    </label>
+                  </div>
+                </div> 
+              </form>
+            </div>
+          </div>
+        </div>
+    
+        <h2 class="qty">Quantity</h2>
+        <div class="counter">  
+          <button mat-button mat-icon-button matPrefix aria-label="Remove"
+          (click)="incrementValue(-_step)" [disabled]="shouldDisableDecrement(_value)" class="btnCount">-</button>
+          <input class="count" matInput type="number" [(ngModel)]="_value"/>
+          <button mat-button mat-icon-button matSuffix aria-label="Add"
+          (click)="incrementValue(_step)" [disabled]="shouldDisableIncrement(_value)" class="btnCount">+</button>
+        </div>  
+        <!-- <h2 class="qty">Quantity</h2>
+        <div class="counter">  
+          <button mat-button mat-icon-button matPrefix aria-label="Remove"
+          (click)="incrementValue(-_step)" [disabled]="shouldDisableDecrement(_value)" class="btnCount">-</button>
+          <input class="count" matInput type="number" [(ngModel)]="_value"/>
+          <button mat-button mat-icon-button matSuffix aria-label="Add"
+          (click)="incrementValue(_step)" [disabled]="shouldDisableIncrement(_value)" class="btnCount">+</button>
+        </div> -->
+
+        <button class="btnCart" [disabled]="!radioForm.valid" (click)="add(); clicked = true" mat-raised-button
+          color="accent">Add Cart</button>
+      </div>
+    </div>
+  </div>
+</div>

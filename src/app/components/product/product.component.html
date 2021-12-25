@@ -1,0 +1,33 @@
+<div class="body">
+    <p>Category/{{id}} </p>
+    <mat-grid-list cols="4" rowHeight="1:1" gutterSize="20px">
+        <div style="width: 100%; height: 100%;">
+        <mat-grid-tile *ngFor="let p of Plist">
+          
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img [src]="p.img" alt="Avatar" class="img-fit">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>{{p.title}}</h1>
+                    <p>{{p.description}}</p>
+                      <p>Rs <span style="color: green; font-size: larger;">{{p.price}}</span></p>
+                      <p>
+                      <ngb-rating [rate]="3"></ngb-rating>
+                      </p>
+                      <!-- <div *ngFor="let v of p.variant">
+                        <p>{{v.name}}</p>
+                           <div *ngFor="let o of v.option">
+                            <p>{{o.spec}}</p>
+                            <p>{{o.price}}</p>
+                          </div>
+                      </div> -->
+                      <button  [routerLink]="['../../','Product', p.id]" mat-raised-button color="accent">Show Details</button>
+                  </div>
+                </div>
+              </div>
+        </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div> 

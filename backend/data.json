@@ -1,0 +1,19 @@
+{
+    "categories": [
+        {
+          "catId":1,
+          "catName":"cloth",
+          "catProducts":[]
+        },
+        {
+            "catId":2,
+            "catName":"shoes",
+            "catProducts":[]
+        },
+        {
+            "catId":1,
+            "catName":"jewellery",
+            "catProducts":[]
+        }
+      ]
+}

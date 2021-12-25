@@ -1,0 +1,47 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div class="topnav" id="myTopnav">
+  <a style="margin-right: 30%; pointer-events: none" mat-button>
+    <i
+      style="margin-right: 10px; margin-bottom: 5px"
+      class="fa fa-cart-plus">
+  </i>Cart App</a>
+  
+  <a mat-button routerLinkActive="active" routerLink="home">Home</a>
+  <a mat-button [matMenuTriggerFor]="menu">Category</a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['Category', '1']">Cloths</button>
+    <button mat-menu-item [routerLink]="['Category', '2']">Electronics</button>
+    <button mat-menu-item [routerLink]="['Category', '3']">Shoes</button>
+    <button mat-menu-item [routerLink]="['Category', '4']">Jewellery</button>
+  </mat-menu>
+  <a mat-button routerLink="AddProduct">Add Product</a>
+
+  <mat-icon [matBadge]="cartCounter | async" routerLink="Cart" class="cartImg" matBadgeColor="accent">add_shopping_cart</mat-icon>
+  
+  <a mat-button href="javascript:void(0);" class="icon" (click)="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<router-outlet></router-outlet>
+
+<!-- <mat-toolbar color="black">
+      <span>Ecommerce App</span>
+      <span class="example-spacer"></span>
+      <span><button mat-button routerLinkActive="active" routerLink="home">Home</button></span>
+      <span class="example-button-row">
+        <button mat-button [matMenuTriggerFor]="menu">Category</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/Category', '1']">Cloths</button>
+            <button mat-menu-item [routerLink]="['/Category', '2']">Electronics</button>
+            <button mat-menu-item [routerLink]="['/Category', '3']">Shoes</button>
+            <button mat-menu-item [routerLink]="['/Category', '4']">Jewellery</button>
+          </mat-menu>
+        </span>
+        <span class="example-button-row">
+          <button mat-button routerLink="AddProduct">Add Product</button>
+        </span>
+    </mat-toolbar> -->

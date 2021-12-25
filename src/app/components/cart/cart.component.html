@@ -1,0 +1,57 @@
+<body>
+    <div class="Cart-Container">
+        <div class="Header">
+            <h3 class="Heading">Shopping Cart</h3>
+            <h5 (click)="removeAll()" class="Action">Remove all</h5>
+        </div>
+
+        <div *ngFor="let c of cartList; let i = index" class="Cart-Items">
+
+            <div class="image-box">
+                <img [src]="c.img" style=" height:120px" />
+            </div>
+            <div class="about">
+                <h1 class="title">{{c.title}}</h1>
+                <h3 class="subtitle" *ngFor = "let v of variantsById(i)">{{v.variantName}}: {{v.specName}}</h3>
+                <!-- <h3 ></h3>
+                <h3 class="subtitle">Color: red</h3>
+                <h3 class="subtitle">Color: red</h3>
+                <h3 class="subtitle">Color: red</h3> -->
+
+                 <!-- <h3 class="subtitle">Size: {{v.Size.spec}}</h3> -->
+                <img [src]="c.img" style="height:30px" />
+            </div>
+                <div class="counter"> 
+                    <button mat-button mat-icon-button matPrefix class="negbtn" (click)="decreament(i)">-</button>
+                      <input class="count" matInput type="number" [value]="c.quantity"/>
+                    <button mat-button mat-icon-button matPrefix class="posbtn" (click)="increament(i)">+</button> 
+                  <!-- <h2 class="count">{{c.quantity}}</h2> -->
+                </div> 
+                <!-- <input class="count" matInput type="number" [value]="c.quantity"/> -->
+            <div class="prices">
+                <div class="amount">{{c.totalPrice}}</div>
+                <button (click)="removeItem(i)" class="remove"><u>Remove</u></button>
+            </div>
+        </div>
+        <hr>
+        <div class="checkout">
+            <div class="total">
+                <div *ngIf="cartList">
+                    <div class="Subtotal">Sub-Total</div>
+                    <div class="items">{{cartList.length}}</div>
+                </div>
+                <div class="total-amount">{{netAmount}}</div>
+            </div>
+            <button class="button">Checkout</button>
+        </div>
+    </div>
+</body>
+
+<!-- 
+<p>cart works!</p>
+<div *ngFor="let c of cartList">
+    <p>{{c.title}}</p>
+    <p>Total Price {{c.price}}</p>
+    <p>Quantity{{c.quantity}}</p>
+    <p>{{c.variants | json}}</p>
+</div> -->
